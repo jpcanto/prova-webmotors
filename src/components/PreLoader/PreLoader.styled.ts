@@ -37,7 +37,6 @@ export const LoaderBar = styled.div`
   border-top-color: #e73939;
   display: block;
   height: 100px;
-  margin: -25px 0 0 -25px;
   width: 100px;
 
   &:before, &:after {
