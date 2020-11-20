@@ -7,5 +7,5 @@ export type VehiclesMakersAction = ActionType<typeof actions>
 export interface VehiclesMakersState {
   readonly error: boolean,
   readonly loading: boolean,
-  readonly vehiclesMakers: Object
+  readonly vehiclesMakers: Object | null
 }

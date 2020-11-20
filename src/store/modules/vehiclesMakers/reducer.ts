@@ -3,7 +3,7 @@ import { VehiclesMakersState, VehiclesMakersAction } from "./types";
 const INITIAL_STATE: VehiclesMakersState = {
   error: false,
   loading: false,
-  vehiclesMakers: {}
+  vehiclesMakers: null
 }
 
 function vehiclesMakers(state = INITIAL_STATE, action: VehiclesMakersAction): VehiclesMakersState {
