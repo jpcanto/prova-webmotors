@@ -5,7 +5,7 @@ import * as actions from './actions';
 export type VehiclesMakersAction = ActionType<typeof actions>
 
 export interface VehiclesMakersState {
-  readonly ID?: number,
+  readonly error: boolean,
   readonly loading: boolean,
-  readonly Name?: string,
+  readonly vehiclesMakers: Object
 }
