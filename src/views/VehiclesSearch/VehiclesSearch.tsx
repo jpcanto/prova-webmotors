@@ -1,21 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { StoreState } from "../../store/createStore";
 import { vehiclesMakersRequest } from "../../store/modules/vehiclesMakers/actions";
+import { vehiclesModelsRequest } from "../../store/modules/vehiclesModels/actions";
 
-import PreLoader from "../../components/PreLoader";
+import PreLoader from "../../components/PreLoader/PreLoader";
+import Select from "../../components/Select/Select";
 
 const VehiclesSearch: React.FC = () => {
-  const vehiclesMakers = useSelector((state: StoreState) => state.vehiclesMakers);
+  const VMakers = useSelector((state: StoreState) => state.vehiclesMakers);
+  const VModels = useSelector((state: StoreState) => state.vehiclesModels);
   const dispatch = useDispatch();
 
-  console.log("Dispatching an vehicle maker: ", vehiclesMakers);
+  useEffect(() => {
+    dispatch(vehiclesMakersRequest());
+    dispatch(vehiclesModelsRequest({ MakeID: 1 }));
+  }, [dispatch]);
 
   return (
     <>
-      <button onClick={() => dispatch(vehiclesMakersRequest())}>Me clique</button>
-      {vehiclesMakers.loading ? <PreLoader /> : null}
+      {VMakers.loading || VModels.loading ? <PreLoader /> : null}
+      {VModels.vehiclesModels ? <Select mode="maker" /> : null}
     </>
   );
 };
