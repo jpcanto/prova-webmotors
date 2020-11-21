@@ -1,7 +1,13 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { StoreState } from "../../store/createStore";
+import { vehiclesMakersRequest } from "../../store/modules/vehiclesMakers/actions";
+import { vehiclesModelsRequest } from "../../store/modules/vehiclesModels/actions";
+import { vehiclesVersionsRequest } from "../../store/modules/vehiclesVersions/actions";
+// import { vehiclesRequest } from "../../store/modules/vehicles/actions";
+
+import PreLoader from "../PreLoader/PreLoader";
 
 import { Selection } from "./Select.styled";
 
@@ -10,25 +16,51 @@ interface ISelectProps {
 }
 
 const Select: React.FC<ISelectProps> = ({ mode }) => {
-  const dataMakers = useSelector((state: StoreState) => state.vehiclesMakers);
-  const dataModels = useSelector((state: StoreState) => state.vehiclesModels);
-  const dataVersions = useSelector((state: StoreState) => state.vehiclesVersions);
+  const VMakers = useSelector((state: StoreState) => state.vehiclesMakers);
+  const VModels = useSelector((state: StoreState) => state.vehiclesModels);
+  const VVersions = useSelector((state: StoreState) => state.vehiclesVersions);
+  // const Vehicles = useSelector((state: StoreState) => state.vehicles);
+  const dispatch = useDispatch();
+
   const data =
     mode === "maker"
-      ? dataMakers.vehiclesMakers
+      ? VMakers.vehiclesMakers
       : mode === "model"
-      ? dataModels.vehiclesModels
-      : dataVersions.vehiclesVersions;
+      ? VModels.vehiclesModels
+      : VVersions.vehiclesVersions;
+
+  useEffect(() => {
+    dispatch(vehiclesMakersRequest());
+  }, [dispatch]);
+
+  function handleFilter(ev: React.ChangeEvent<HTMLSelectElement>) {
+    if (ev.target.value === "default") return;
+    if (mode === "maker") {
+      dispatch(vehiclesModelsRequest({ MakeID: Number(ev.target.value) }));
+      return;
+    }
+    if (mode === "model") {
+      dispatch(vehiclesVersionsRequest({ ModelID: Number(ev.target.value) }));
+      return;
+    }
+  }
 
   return (
     <>
+      {VMakers.loading || VModels.loading || VVersions.loading ? <PreLoader /> : null}
       {data ? (
-        <Selection>
+        <Selection onChange={(ev) => handleFilter(ev)}>
           {Object.entries(data).map((res) => (
-            <option key={res[0]}>{res[1].Name}</option>
+            <option key={res[0]} value={res[1].ID}>
+              {res[1].Name}
+            </option>
           ))}
         </Selection>
-      ) : null}
+      ) : (
+        <Selection onChange={(ev) => handleFilter(ev)}>
+          <option value="default">{mode !== "model" ? "Todas" : "Todos"}</option>)
+        </Selection>
+      )}
     </>
   );
 };
