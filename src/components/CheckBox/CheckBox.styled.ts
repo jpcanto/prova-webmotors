@@ -38,12 +38,12 @@ export const Checkbox = styled.label`
     }
 
     &:checked + span::before {
-      color: #d43131;
+      color: #ca2430;
       font-weight: bolder;
     }
   }
 
   &:hover   input:not(:checked) + span {
-    border-color: #d43131;
+    border-color: #ca2430;
   }
 `;

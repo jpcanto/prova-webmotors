@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Checkbox } from "./CheckBox.styled";
+import Input from '../Input/Input';
 
 interface IProps {
   label: string;
@@ -9,7 +10,7 @@ interface IProps {
 const CheckBox: React.FC<IProps> = ({ label }) => {
   return (
     <Checkbox>
-      <input type="checkbox" />
+      <Input type="checkbox" />
       <span></span>
       {label}
     </Checkbox>
