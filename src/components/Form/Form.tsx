@@ -5,6 +5,7 @@ import CheckBox from "../../components/CheckBox/CheckBox";
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
 import LabelButton from "../../components/LabelButton/LabelButton";
+import Button from "../../components/Button/Button";
 
 const Form: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const Form: React.FC = () => {
       <Select mode="version" />
       <LabelButton color="#89414b" fontSize=".9em" text="Busca Avançada" bold={true} />
       <LabelButton color="#a8a8a8" fontSize=".9em" text="Limpar Filtros" bold={false} />
+      <Button bgcolor="#ca2430" border="none" color="#fff" fontSize="1.2em" text="VER OFERTAS" />
     </FormComponent>
   );
 };
