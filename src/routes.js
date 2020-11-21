@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Switch, Route, Redirect, Link } from 'react-router-dom';
+import { Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import App from './App';
 import NotFound from './views/NotFound/NotFound';
