@@ -14,7 +14,9 @@ export const ButtonComponent = styled.button<IButton>`
   font-weight: bold;
 
   border: ${props => props.border};
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: ${props => props.bgcolor};
   cursor: pointer;
+  height: 5vh;
+  width: -webkit-fill-available;
 `;

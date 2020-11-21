@@ -13,4 +13,5 @@ export const Label = styled.label<ILabel>`
   font-weight: ${props => props.bold ? '700' : '400'};
 
   cursor: pointer;
+  width: -webkit-fill-available;
 `;
