@@ -11,7 +11,7 @@ import Button from "../../components/Button/Button";
 const Form: React.FC = () => {
   return (
     <FormComponent>
-      <FlexBox direction="column" padding="3vh 6vw">
+      <FlexBox direction="column" padding="2vh 5vw">
         <FlexBox direction="row">
           <CheckBox label="Novos" />
           <CheckBox label="Usados" />

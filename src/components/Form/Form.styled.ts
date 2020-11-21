@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const FormComponent = styled.form`
+  background-color: #fff;
   display: block;
   margin: auto;
   max-height: 312px;
