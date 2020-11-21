@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import { StoreState } from "../../store/createStore";
@@ -12,13 +12,20 @@ interface ISelectProps {
 const Select: React.FC<ISelectProps> = ({ mode }) => {
   const dataMakers = useSelector((state: StoreState) => state.vehiclesMakers);
   const dataModels = useSelector((state: StoreState) => state.vehiclesModels);
-  const data = mode === "maker" ? dataMakers.vehiclesMakers : dataModels.vehiclesModels;
+  const dataVersions = useSelector((state: StoreState) => state.vehiclesVersions);
+  const data =
+    mode === "maker"
+      ? dataMakers.vehiclesMakers
+      : mode === "model"
+      ? dataModels.vehiclesModels
+      : dataVersions.vehiclesVersions;
+
   return (
     <>
       {data ? (
         <Selection>
-          {Object.entries(data).map((Maker) => (
-            <option key={Maker[0]}>{Maker[1].Name}</option>
+          {Object.entries(data).map((res) => (
+            <option key={res[0]}>{res[1].Name}</option>
           ))}
         </Selection>
       ) : null}

@@ -28,9 +28,8 @@ const VehiclesSearch: React.FC = () => {
     <>
       {VMakers.loading || VModels.loading || VVersions.loading ? <PreLoader /> : null}
       {VMakers.vehiclesMakers ? <Select mode="maker" /> : null}
-      {VModels.vehiclesModels ? <Select mode="models" /> : null}
-      {VVersions.vehiclesVersions ? <Select mode="versions" /> : null}
-      {Vehicles.vehicles ? <Select mode="versions" /> : null}
+      {VModels.vehiclesModels ? <Select mode="model" /> : null}
+      {VVersions.vehiclesVersions ? <Select mode="version" /> : null}
     </>
   );
 };
