@@ -11,4 +11,6 @@ export const Label = styled.label<ILabel>`
   font-family: Arial, Helvetica, sans-serif;
   font-size: ${props => props.fontSize};
   font-weight: ${props => props.bold ? '700' : '400'};
+
+  cursor: pointer;
 `;
