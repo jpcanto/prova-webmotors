@@ -11,9 +11,6 @@ const history = createBrowserHistory();
 const Routes = () => {
 
   return <Router history={history}>
-    <nav>
-      <Link to="/" />
-    </nav>
     <Switch>
       <Route exact path='/' render={() => <App />} />
       <Route path='/404' render={() => <NotFound />} />
