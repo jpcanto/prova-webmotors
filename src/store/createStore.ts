@@ -10,7 +10,7 @@ export interface StoreState {
   vehiclesVersions: VehiclesVersionsState,
 }
 
-export type StoreAction = VehiclesMakersAction & VehiclesModelsAction;
+export type StoreAction = VehiclesMakersAction & VehiclesModelsAction & VehiclesVersionsAction;
 
 export default (reducers: Reducer<StoreState, StoreAction>, middlewares: Middleware[]) => {
   const enhancer = applyMiddleware(...middlewares);
