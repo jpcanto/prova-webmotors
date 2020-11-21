@@ -1,9 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
+
 import { StoreState } from "../../store/createStore";
 
+import { Selection } from "./Select.styled";
+
 interface ISelectProps {
-  mode: String;
+  mode: string;
 }
 
 const Select: React.FC<ISelectProps> = ({ mode }) => {
@@ -13,14 +16,11 @@ const Select: React.FC<ISelectProps> = ({ mode }) => {
   return (
     <>
       {data ? (
-        <select>
-          <option>
-            {mode === "maker" ? "Marca: Todas:" : mode === "model" ? "Modelo: Todos:" : null}
-          </option>
+        <Selection>
           {Object.entries(data).map((Maker) => (
             <option key={Maker[0]}>{Maker[1].Name}</option>
           ))}
-        </select>
+        </Selection>
       ) : null}
     </>
   );
