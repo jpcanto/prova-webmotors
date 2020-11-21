@@ -1,6 +1,6 @@
 # WebMotors test
 
-## DEV: João Pedro Lopes Canto 
+## DEV: João Pedro Lopes Canto
 
 ## User history:
 
@@ -12,6 +12,7 @@ I, as a user, want to view information about cars for sale, in a simple and inte
 - The application must provide an excellent user experience, being interactive, easy to understand and always informing the user of an action or failure.
 - The application must be scalable, good code writing practices and provide a document for easy handling in the development environment (README).
 - The application must provide security, with automated tests.
+- The application must provide a pattern, with linter, editorconfig and a default formatter (prettier).
 - The application must interact with the user in possible errors, the user must know everything that is happening.
 ## to run the application you need:
 
