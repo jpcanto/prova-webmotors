@@ -1,5 +1,5 @@
 import { ActionType } from "typesafe-actions";
-import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { takeLatest, call, put, all } from '@redux-saga/core/effects';
 
 import * as actions from './actions';
 import api from "../../../services/api";
