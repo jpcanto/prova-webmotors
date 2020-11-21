@@ -19,4 +19,9 @@ export const ButtonComponent = styled.button<IButton>`
   cursor: pointer;
   height: 5vh;
   width: -webkit-fill-available;
+
+  &:hover {
+    filter: brightness(110%);
+    transition: .3s ease-in;
+  }
 `;

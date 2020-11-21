@@ -20,7 +20,7 @@ const Form: React.FC = () => {
           <Select mode="maker" />
           <Select mode="model" />
           <Input type="number" min="2012" max="2018" placeholder="Ano Desejado" />
-          <Input type="number" min="0" placeholder="Faixa de Preço" />
+          <Input type="number" min="37000" max="78000" placeholder="Faixa de Preço" />
           <Select mode="version" />
         </FlexBox>
         <FlexBox direction="row">

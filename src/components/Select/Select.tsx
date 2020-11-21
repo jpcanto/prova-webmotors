@@ -50,6 +50,7 @@ const Select: React.FC<ISelectProps> = ({ mode }) => {
       {VMakers.loading || VModels.loading || VVersions.loading ? <PreLoader /> : null}
       {data ? (
         <Selection onChange={(ev) => handleFilter(ev)}>
+          <option value="default">{mode !== "model" ? "Todas" : "Todos"}</option>)
           {Object.entries(data).map((res) => (
             <option key={res[0]} value={res[1].ID}>
               {res[1].Name}

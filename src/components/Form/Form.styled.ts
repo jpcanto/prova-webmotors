@@ -9,6 +9,10 @@ export const FormComponent = styled.form`
   [direction="column"] > [direction="row"] {
     margin: 15px 0;
 
+    label:not(:first-of-type) {
+      margin-left: 40px;
+    }
+
     select:not(:first-child), input {
       margin-left: 10px;
     }
