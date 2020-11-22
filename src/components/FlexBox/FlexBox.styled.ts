@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 interface IFlex {
+  align?: string;
   direction: string;
   bgcolor?: string;
   position?: string;
@@ -8,7 +9,7 @@ interface IFlex {
 }
 
 export const FlexBox = styled.div<IFlex>`
-  align-items: center;
+  align-items: ${props => props.align ? props.align : 'center'};
   background-color: ${props => props.bgcolor};
   display: flex;
   flex-direction: ${props => props.direction};
