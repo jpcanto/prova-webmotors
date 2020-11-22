@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { StoreState } from "../../store/createStore";
@@ -6,17 +6,20 @@ import { StoreState } from "../../store/createStore";
 import { vehiclesRequest } from "../../store/modules/vehicles/actions";
 import { Container, ContainerImage } from "./FilteredVehicles.styled";
 import { FlexBox } from "../FlexBox/FlexBox.styled";
+import PreLoader from "../PreLoader/PreLoader";
 
 const FilteredVehicles: React.FC = () => {
   const dispatch = useDispatch();
   const VehiclesData = useSelector((state: StoreState) => state.vehicles);
+  const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
-    dispatch(vehiclesRequest({ Page: 1 }));
-  }, [dispatch]);
+    dispatch(vehiclesRequest({ Page: page }));
+  }, [dispatch, page]);
 
   return (
     <Container>
+      {VehiclesData.loading ? <PreLoader /> : null}
       <FlexBox direction="row" position="center">
         {VehiclesData.vehicles
           ? Object.entries(VehiclesData.vehicles).map((vehicle) => {
@@ -46,6 +49,13 @@ const FilteredVehicles: React.FC = () => {
               );
             })
           : null}
+      </FlexBox>
+      <FlexBox direction="row" align="center" position="space-evenly">
+        {[1, 2, 3].map((number) => (
+          <div onClick={() => setPage(number)} key={number}>
+            {number}
+          </div>
+        ))}
       </FlexBox>
     </Container>
   );

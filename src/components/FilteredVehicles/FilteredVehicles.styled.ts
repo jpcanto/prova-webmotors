@@ -5,6 +5,8 @@ interface IContainer {
 }
 
 export const Container = styled.div`
+  font-family: Arial, Helvetica, sans-serif;
+
   background-color: #fff;
   cursor: pointer;
   margin-top: 40px;
@@ -16,7 +18,6 @@ export const Container = styled.div`
 
       [direction="column"] {
         color: #777;
-        font-family: Arial, Helvetica, sans-serif;
         font-size: .7em;
 
         border-radius: 3px;
@@ -48,6 +49,36 @@ export const Container = styled.div`
             p {
               width: -webkit-fill-available;
             }
+          }
+        }
+      }
+
+      &:last-of-type {
+        border: 2px solid #a8a8a84a;
+        border-radius: 3px;
+        background-color: #f3f3f3;
+        height: 3vh;
+        margin: auto;
+        width: 15vw;
+
+        @media(max-width: 760px) {
+          height: 5vh;
+          width: 25vw;
+        }
+
+        div {
+          align-items: center;
+          display: flex;
+          height: 100%;
+          justify-content: center;
+          width: 20%;
+
+          &:hover {
+            color: #ca2430;
+            font-weight: bold;
+
+            filter: brightness(200%);
+            transition: .2s ease-in;
           }
         }
       }
