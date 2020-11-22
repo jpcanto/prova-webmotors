@@ -29,7 +29,7 @@ const FormHeader: React.FC = () => {
 
   function handleClick(type: string) {
     setActive(type);
-    notify();
+    if (type === "bike") notify();
   }
 
   return (
