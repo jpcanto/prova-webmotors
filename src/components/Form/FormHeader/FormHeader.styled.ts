@@ -21,6 +21,10 @@ export const Header = styled.div`
         padding-bottom: 8px;
         width: 15%;
 
+        &:not(:first-child) {
+          margin-left: 20px;
+        }
+
         p {
           color: #a8a8a8;
           font-family: Arial, Helvetica, sans-serif;
