@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 interface IButton {
-  bgcolor: string,
-  border: string,
-  color: string,
-  fontSize: string
+  bgcolor: string;
+  border: string;
+  color: string;
+  fontSize: string;
+  width?: string;
 }
 
 export const ButtonComponent = styled.button<IButton>`
@@ -18,7 +19,7 @@ export const ButtonComponent = styled.button<IButton>`
   background-color: ${props => props.bgcolor};
   cursor: pointer;
   height: 5vh;
-  width: -webkit-fill-available;
+  width: ${props => props.width ? props.width : '-webkit-fill-available'};
 
   &:hover {
     filter: brightness(110%);
