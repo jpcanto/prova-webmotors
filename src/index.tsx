@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { ToastProvider } from "react-toast-notifications";
 
-import './index.css';
+import "./index.css";
 
 import Routes from "./routes";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routes />
+    <ToastProvider>
+      <Routes />
+    </ToastProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
