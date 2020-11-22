@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const FormComponent = styled.form`
   background-color: #fff;
+  max-height: 312px;
 
   [direction="column"] {
 
