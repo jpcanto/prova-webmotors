@@ -14,15 +14,16 @@ export const Header = styled.div`
     [direction="row"] {
       :first-of-type {
         margin-top: auto;
-        padding-bottom: 8px;
       }
 
       [direction="row"] {
         cursor: pointer;
+        padding-bottom: 8px;
         width: 15%;
 
         p {
           color: #a8a8a8;
+          font-family: Arial, Helvetica, sans-serif;
 
           margin: 0;
 
@@ -40,6 +41,7 @@ export const Header = styled.div`
       button {
         height: 4vh;
         margin-left: auto;
+        margin-bottom: 8px;
       }
 
     }
