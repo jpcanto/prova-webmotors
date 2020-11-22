@@ -35,14 +35,14 @@ const FormHeader: React.FC = () => {
   return (
     <Header>
       <FlexBox direction="column" align="flex-start" position="space-around">
-        <img src={Logo} />
+        <img src={Logo} alt="logo" />
         <FlexBox direction="row">
           <FlexBox
             direction="row"
             active={active === "car" ? true : false}
             onClick={() => handleClick("car")}
           >
-            <img src={Car} />
+            <img src={Car} alt="car icon" />
             <FlexBox direction="column">
               <p>COMPRAR</p>
               <p>CARROS</p>
@@ -53,7 +53,7 @@ const FormHeader: React.FC = () => {
             active={active === "bike" ? true : false}
             onClick={() => handleClick("bike")}
           >
-            <img src={Bike} />
+            <img src={Bike} alt="bike icon" />
             <FlexBox direction="column">
               <p>COMPRAR</p>
               <p>MOTOS</p>
