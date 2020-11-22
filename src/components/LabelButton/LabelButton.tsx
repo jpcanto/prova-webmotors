@@ -14,7 +14,7 @@ interface IProps {
 
 const LabelButton: React.FC<IProps> = ({ color, fontSize, text, bold }) => {
   const errorNotify = () =>
-    toast.error("Oops, essa funcionalidade ainda não foi implementada!", {
+    toast.error("⚠️ Oops, essa funcionalidade ainda não foi implementada!", {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
