@@ -1,7 +1,9 @@
 import React from "react";
-import { useToasts } from "react-toast-notifications";
 
 import { Label } from "./LabelButton.styled";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface IProps {
   color: string;
@@ -11,20 +13,24 @@ interface IProps {
 }
 
 const LabelButton: React.FC<IProps> = ({ color, fontSize, text, bold }) => {
-  const { addToast } = useToasts();
-
-  function handleClick() {
-    if (text === "Busca Avançada")
-      addToast("Oops, essa funcionalidade ainda não foi implementada", {
-        appearance: "error",
-        autoDismiss: true
-      });
-  }
+  const errorNotify = () =>
+    toast.error("Oops, essa funcionalidade ainda não foi implementada!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   return (
-    <Label color={color} fontSize={fontSize} bold={bold} onClick={handleClick}>
-      {text}
-    </Label>
+    <>
+      <ToastContainer />
+      <Label color={color} fontSize={fontSize} bold={bold} onClick={errorNotify}>
+        {text}
+      </Label>
+    </>
   );
 };
 
