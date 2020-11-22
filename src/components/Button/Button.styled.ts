@@ -25,4 +25,13 @@ export const ButtonComponent = styled.button<IButton>`
     filter: brightness(110%);
     transition: .3s ease-in;
   }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.effect {
+    opacity: .5;
+    transition: .1s ease-in;
+  }
 `;
