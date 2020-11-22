@@ -36,7 +36,7 @@ const Button: React.FC<IProps> = ({ bgcolor, border, color, fontSize, text, widt
     setClickEffect(true);
     setTimeout(() => {
       setClickEffect(false);
-    }, 100);
+    }, 200);
 
     if (text === "Vender meu carro") notify();
   }
