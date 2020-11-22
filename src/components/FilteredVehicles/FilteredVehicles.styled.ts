@@ -54,9 +54,6 @@ export const Container = styled.div`
       }
 
       &:last-of-type {
-        border: 2px solid #a8a8a84a;
-        border-radius: 3px;
-        background-color: #f3f3f3;
         height: 3vh;
         margin: auto;
         width: 15vw;
