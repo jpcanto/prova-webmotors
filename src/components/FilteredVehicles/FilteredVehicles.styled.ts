@@ -25,6 +25,16 @@ export const Container = styled.div`
         margin: 20px 10px;
         width: 20%;
 
+        @media(max-width: 760px) {
+          height: 40vh;
+          width: 40%;
+        }
+
+        @media(max-width: 350px) {
+          height: 50vh;
+          width: 70%;
+        }
+
         p {
           margin: 5px 0;
           padding: 2px 10px;
