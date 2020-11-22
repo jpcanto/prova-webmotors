@@ -10,9 +10,10 @@ interface IProps {
   fontSize: string;
   text: string;
   bold: boolean;
+  error: boolean;
 }
 
-const LabelButton: React.FC<IProps> = ({ color, fontSize, text, bold }) => {
+const LabelButton: React.FC<IProps> = ({ color, fontSize, text, bold, error }) => {
   const errorNotify = () =>
     toast.error("⚠️ Oops, essa funcionalidade ainda não foi implementada!", {
       position: "top-center",
@@ -27,7 +28,12 @@ const LabelButton: React.FC<IProps> = ({ color, fontSize, text, bold }) => {
   return (
     <>
       <ToastContainer />
-      <Label color={color} fontSize={fontSize} bold={bold} onClick={errorNotify}>
+      <Label
+        color={color}
+        fontSize={fontSize}
+        bold={bold}
+        onClick={() => (error ? errorNotify() : null)}
+      >
         {text}
       </Label>
     </>

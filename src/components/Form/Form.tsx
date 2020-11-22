@@ -33,9 +33,21 @@ const Form: React.FC = () => {
             </FlexBox>
           </FlexBox>
           <FlexBox direction="row">
-            <LabelButton color="#89414b" fontSize=".9em" text="Busca Avançada" bold={true} />
+            <LabelButton
+              color="#89414b"
+              fontSize=".9em"
+              text="Busca Avançada"
+              bold={true}
+              error={true}
+            />
             <FlexBox direction="row">
-              <LabelButton color="#a8a8a8" fontSize=".9em" text="Limpar Filtros" bold={false} />
+              <LabelButton
+                color="#a8a8a8"
+                fontSize=".9em"
+                text="Limpar Filtros"
+                bold={false}
+                error={false}
+              />
               <Button
                 bgcolor="#ca2430"
                 border="none"
