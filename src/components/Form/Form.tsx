@@ -5,6 +5,7 @@ import { FlexBox } from "../../components/FlexBox/FlexBox.styled";
 import CheckBox from "../../components/CheckBox/CheckBox";
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
+import LocationInput from "../../components/Input/LocationInput/LocationInput";
 import LabelButton from "../../components/LabelButton/LabelButton";
 import Button from "../../components/Button/Button";
 
@@ -16,12 +17,17 @@ const Form: React.FC = () => {
           <CheckBox label="Novos" />
           <CheckBox label="Usados" />
         </FlexBox>
-        <FlexBox direction="row" position="space-between">
-          <Select mode="maker" />
-          <Select mode="model" />
-          <Input type="number" min="2012" max="2018" placeholder="Ano Desejado" />
-          <Input type="number" min="37000" max="78000" placeholder="Faixa de Preço" />
-          <Select mode="version" />
+        <FlexBox direction="column">
+          <FlexBox direction="row">
+            <LocationInput />
+            <Select mode="maker" />
+            <Select mode="model" />
+          </FlexBox>
+          <FlexBox direction="row">
+            <Input type="number" min="2012" max="2018" placeholder="Ano Desejado" />
+            <Input type="number" min="37000" max="78000" placeholder="Faixa de Preço" />
+            <Select mode="version" />
+          </FlexBox>
         </FlexBox>
         <FlexBox direction="row">
           <LabelButton color="#89414b" fontSize=".9em" text="Busca Avançada" bold={true} />
