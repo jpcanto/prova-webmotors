@@ -12,11 +12,15 @@ export const FormComponent = styled.form`
     > [direction="column"] {
 
       > [direction="row"]:not(:last-of-type) > select:not(:first-child),
-      > [direction="row"]:not(:last-of-type) > input:not(:first-child),
-      > [direction="row"]:not(:first-of-type) select:not(:last-child),
-      > [direction="row"]:not(:first-of-type) input:not(:last-child) {
+      > [direction="row"]:not(:last-of-type) > input:not(:first-child) {
         width: 27.5%;
         margin-left: 10px;
+      }
+
+      > [direction="row"]:not(:first-of-type) > select:not(:last-child),
+      > [direction="row"]:not(:first-of-type) > input:not(:last-child) {
+        width: 27.5%;
+        margin-right: 10px;
       }
 
     }
