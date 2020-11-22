@@ -4,7 +4,7 @@ import { Header } from "./FormHeader.styled";
 import { FlexBox } from "../../FlexBox/FlexBox.styled";
 
 import Button from "../../Button/Button";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Logo from "../../../assets/img/logo.png";
