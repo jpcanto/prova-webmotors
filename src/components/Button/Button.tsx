@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 import { ButtonComponent } from "./Button.styled";
 
@@ -12,6 +13,26 @@ interface IProps {
 }
 
 const Button: React.FC<IProps> = ({ bgcolor, border, color, fontSize, text, width }) => {
+  const notify = () =>
+    toast.warning(
+      "⚠️ Esta funcionalidade estará disponível nas próximas atualizações, sabemos que você tem interesse, e assim que estiver disponível te avisaremos no email cadastrado!",
+      {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+
+  function handleClick(ev: React.MouseEvent) {
+    ev.preventDefault();
+
+    if (text === "Vender meu carro") notify();
+  }
+
   return (
     <ButtonComponent
       bgcolor={bgcolor}
@@ -19,7 +40,7 @@ const Button: React.FC<IProps> = ({ bgcolor, border, color, fontSize, text, widt
       color={color}
       fontSize={fontSize}
       width={width}
-      onClick={(ev) => ev.preventDefault()}
+      onClick={(ev) => handleClick(ev)}
     >
       {text}
     </ButtonComponent>

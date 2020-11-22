@@ -13,7 +13,7 @@ import Bike from "../../../assets/img/bike.png";
 
 const FormHeader: React.FC = () => {
   const [active, setActive] = useState<string>("car");
-  const errorNotify = () =>
+  const notify = () =>
     toast.error(
       "⚠️ Oops, essa funcionalidade ainda não foi implementada... Atualmente só temos filtros para carros",
       {
@@ -29,7 +29,7 @@ const FormHeader: React.FC = () => {
 
   function handleClick(type: string) {
     setActive(type);
-    errorNotify();
+    notify();
   }
 
   return (
