@@ -22,12 +22,11 @@ const Select: React.FC<ISelectProps> = ({ mode }) => {
   // const Vehicles = useSelector((state: StoreState) => state.vehicles);
   const dispatch = useDispatch();
 
-  const data =
-    mode === "maker"
-      ? VMakers.vehiclesMakers
-      : mode === "model"
-      ? VModels.vehiclesModels
-      : VVersions.vehiclesVersions;
+  let data: Object | null = {};
+
+  if (mode === "maker") data = VMakers.vehiclesMakers;
+  else if (mode === "model") data = VModels.vehiclesModels;
+  else data = VVersions.vehiclesVersions;
 
   useEffect(() => {
     dispatch(vehiclesMakersRequest());
@@ -35,14 +34,10 @@ const Select: React.FC<ISelectProps> = ({ mode }) => {
 
   function handleFilter(ev: React.ChangeEvent<HTMLSelectElement>) {
     if (ev.target.value === "default") return;
-    if (mode === "maker") {
-      dispatch(vehiclesModelsRequest({ MakeID: Number(ev.target.value) }));
-      return;
-    }
-    if (mode === "model") {
-      dispatch(vehiclesVersionsRequest({ ModelID: Number(ev.target.value) }));
-      return;
-    }
+    if (mode === "maker")
+      return dispatch(vehiclesModelsRequest({ MakeID: Number(ev.target.value) }));
+    if (mode === "model")
+      return dispatch(vehiclesVersionsRequest({ ModelID: Number(ev.target.value) }));
   }
 
   return (
