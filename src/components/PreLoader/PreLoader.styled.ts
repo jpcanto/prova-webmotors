@@ -12,7 +12,7 @@ const spin = keyframes`
 export const LoaderBox = styled.div`
   cursor: wait;
   align-items: center;
-  background: #8c8c8c78;
+  background: #8c8c8c94;
   bottom: 0;
   display: flex;
   justify-content: center;
@@ -66,8 +66,8 @@ export const LoaderBar = styled.div`
 `;
 
 export const LoaderText = styled.div`
-  color: rgb(114, 114, 114);
-  font-family: FSEmericBold;
+  color: #2d2d2d;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5em;
 
   position: relative;
