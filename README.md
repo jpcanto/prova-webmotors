@@ -26,3 +26,7 @@ I, as a user, want to view information about cars for sale, in a simple and inte
 
  OBS: if the project does not open automatically in your browser, access it manually by typing: http://localhost:3000
 
+ ### To run the tests you just need to execute the command:
+
+ `yarn test` or `npm test`
+
