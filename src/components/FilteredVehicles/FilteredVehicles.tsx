@@ -28,14 +28,22 @@ const FilteredVehicles: React.FC = () => {
   }, [Filters]);
 
   function handleFilters() {
-    if (Filters.make && VehiclesData.vehicles)
-      setFiltered(VehiclesData.vehicles.filter((vehicle: any) => vehicle.Make === Filters.make));
+    if (VehiclesData.vehicles) {
+      if (!Filters.make && !Filters.model && !Filters.version)
+        return setFiltered(VehiclesData.vehicles);
+      if (Filters.make)
+        setFiltered(VehiclesData.vehicles.filter((vehicle: any) => vehicle.Make === Filters.make));
 
-    if (Filters.model)
-      setFiltered(VehiclesData.vehicles.filter((vehicle: any) => vehicle.Model === Filters.model));
+      if (Filters.model)
+        setFiltered(
+          VehiclesData.vehicles.filter((vehicle: any) => vehicle.Model === Filters.model)
+        );
 
-    if (Filters.version)
-      setFiltered(VehiclesData.vehicles.filter((vehicle: any) => vehicle.Version === Filters.version));
+      if (Filters.version)
+        setFiltered(
+          VehiclesData.vehicles.filter((vehicle: any) => vehicle.Version === Filters.version)
+        );
+    }
   }
 
   return (

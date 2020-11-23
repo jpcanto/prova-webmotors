@@ -1,9 +1,9 @@
 import { action } from "typesafe-actions";
 
 interface IFilters {
-  readonly make?: string,
-  readonly model?: string,
-  readonly version?: string,
+  readonly make?: string | null,
+  readonly model?: string | null,
+  readonly version?: string | null,
 }
 
 export function setMakeFilter({make}: IFilters) {
