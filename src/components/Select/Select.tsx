@@ -36,21 +36,34 @@ const Select: React.FC<ISelectProps> = ({ mode }) => {
   }, [dispatch]);
 
   function handleFilter(ev: React.ChangeEvent<HTMLSelectElement>) {
-    if (ev.target.value === "default") return;
-    if (mode === "maker") {
-      dispatch(vehiclesModelsRequest({ MakeID: Number(ev.target.value) }));
-      dispatch(setMakeFilter({ make: ev.target.options[ev.target.selectedIndex].text }));
-      return;
+    if (ev.target.value === "default") {
+      switch (mode) {
+        case "maker":
+          return dispatch(setMakeFilter({ make: null }));
+
+        case "model":
+          return dispatch(setModelFilter({ model: null }));
+
+        case "version":
+          return dispatch(setVersionFilter({ version: null }));
+      }
     }
-    if (mode === "model") {
-      dispatch(vehiclesVersionsRequest({ ModelID: Number(ev.target.value) }));
-      dispatch(setModelFilter({ model: ev.target.options[ev.target.selectedIndex].text }));
-      return;
+    switch (mode) {
+      case "maker":
+        dispatch(vehiclesModelsRequest({ MakeID: Number(ev.target.value) }));
+        dispatch(setMakeFilter({ make: ev.target.options[ev.target.selectedIndex].text }));
+        return;
+
+      case "model":
+        dispatch(vehiclesVersionsRequest({ ModelID: Number(ev.target.value) }));
+        dispatch(setModelFilter({ model: ev.target.options[ev.target.selectedIndex].text }));
+        return;
+
+      case "version":
+        return dispatch(
+          setVersionFilter({ version: ev.target.options[ev.target.selectedIndex].text })
+        );
     }
-    if (mode === "version")
-      return dispatch(
-        setVersionFilter({ version: ev.target.options[ev.target.selectedIndex].text })
-      );
   }
 
   return (
