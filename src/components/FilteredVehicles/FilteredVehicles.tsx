@@ -12,7 +12,7 @@ const FilteredVehicles: React.FC = () => {
   const dispatch = useDispatch();
   const VehiclesData = useSelector((state: StoreState) => state.vehicles);
   const [page, setPage] = useState<number>(1);
-  const [filtered, setFiltered] = useState<any>();
+  const [filtered, setFiltered] = useState<Object[]>([]);
   const Filters = useSelector((state: StoreState) => state.filters);
 
   useEffect(() => {
