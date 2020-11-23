@@ -5,7 +5,11 @@ import { StoreState } from "../../store/createStore";
 import { vehiclesMakersRequest } from "../../store/modules/vehiclesMakers/actions";
 import { vehiclesModelsRequest } from "../../store/modules/vehiclesModels/actions";
 import { vehiclesVersionsRequest } from "../../store/modules/vehiclesVersions/actions";
-// import { vehiclesRequest } from "../../store/modules/vehicles/actions";
+import {
+  setMakeFilter,
+  setModelFilter,
+  setVersionFilter,
+} from "../../store/modules/filters/actions";
 
 import PreLoader from "../PreLoader/PreLoader";
 
@@ -19,7 +23,6 @@ const Select: React.FC<ISelectProps> = ({ mode }) => {
   const VMakers = useSelector((state: StoreState) => state.vehiclesMakers);
   const VModels = useSelector((state: StoreState) => state.vehiclesModels);
   const VVersions = useSelector((state: StoreState) => state.vehiclesVersions);
-  // const Vehicles = useSelector((state: StoreState) => state.vehicles);
   const dispatch = useDispatch();
 
   let data: Object | null = {};
@@ -34,10 +37,20 @@ const Select: React.FC<ISelectProps> = ({ mode }) => {
 
   function handleFilter(ev: React.ChangeEvent<HTMLSelectElement>) {
     if (ev.target.value === "default") return;
-    if (mode === "maker")
-      return dispatch(vehiclesModelsRequest({ MakeID: Number(ev.target.value) }));
-    if (mode === "model")
-      return dispatch(vehiclesVersionsRequest({ ModelID: Number(ev.target.value) }));
+    if (mode === "maker") {
+      dispatch(vehiclesModelsRequest({ MakeID: Number(ev.target.value) }));
+      dispatch(setMakeFilter({ make: ev.target.options[ev.target.selectedIndex].text }));
+      return;
+    }
+    if (mode === "model") {
+      dispatch(vehiclesVersionsRequest({ ModelID: Number(ev.target.value) }));
+      dispatch(setModelFilter({ model: ev.target.options[ev.target.selectedIndex].text }));
+      return;
+    }
+    if (mode === "version")
+      return dispatch(
+        setVersionFilter({ version: ev.target.options[ev.target.selectedIndex].text })
+      );
   }
 
   return (

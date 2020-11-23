@@ -12,38 +12,59 @@ const FilteredVehicles: React.FC = () => {
   const dispatch = useDispatch();
   const VehiclesData = useSelector((state: StoreState) => state.vehicles);
   const [page, setPage] = useState<number>(1);
+  const [filtered, setFiltered] = useState<any>();
+  const Filters = useSelector((state: StoreState) => state.filters);
 
   useEffect(() => {
     dispatch(vehiclesRequest({ Page: page }));
   }, [dispatch, page]);
 
+  useEffect(() => {
+    if (VehiclesData.vehicles) setFiltered(VehiclesData.vehicles);
+  }, [VehiclesData]);
+
+  useEffect(() => {
+    handleFilters();
+  }, [Filters]);
+
+  function handleFilters() {
+    if (Filters.make && VehiclesData.vehicles)
+      setFiltered(VehiclesData.vehicles.filter((vehicle: any) => vehicle.Make === Filters.make));
+
+    if (Filters.model)
+      setFiltered(VehiclesData.vehicles.filter((vehicle: any) => vehicle.Model === Filters.model));
+
+    if (Filters.version)
+      setFiltered(VehiclesData.vehicles.filter((vehicle: any) => vehicle.Version === Filters.version));
+  }
+
   return (
     <Container>
       {VehiclesData.loading ? <PreLoader /> : null}
       <FlexBox direction="row" position="center">
-        {VehiclesData.vehicles
-          ? Object.entries(VehiclesData.vehicles).map((vehicle) => {
+        {filtered
+          ? filtered.map((vehicle: any, index: number) => {
               return (
-                <FlexBox key={vehicle[0]} direction="column" align="flex-start">
-                  <ContainerImage image={vehicle[1].Image}></ContainerImage>
+                <FlexBox key={index} direction="column" align="flex-start">
+                  <ContainerImage image={vehicle.Image}></ContainerImage>
                   <p>
-                    {vehicle[1].Make}, {vehicle[1].Model} <span> {vehicle[1].KM} KM</span>
+                    {vehicle.Make}, {vehicle.Model} <span> {vehicle.KM} KM</span>
                   </p>
-                  <p>{vehicle[1].Color}</p>
-                  <p>{vehicle[1].Version}</p>
+                  <p>{vehicle.Color}</p>
+                  <p>{vehicle.Version}</p>
                   <FlexBox direction="row">
-                    <p>fabricação: {vehicle[1].YearFab}</p>
-                    <p>modelo: {vehicle[1].YearModel}</p>
+                    <p>fabricação: {vehicle.YearFab}</p>
+                    <p>modelo: {vehicle.YearModel}</p>
                   </FlexBox>
                   <FlexBox direction="row">
                     <p>
-                      {parseInt(vehicle[1].Price) < 40000
+                      {parseInt(vehicle.Price) < 40000
                         ? "⭐"
-                        : parseInt(vehicle[1].Price) < 70000
+                        : parseInt(vehicle.Price) < 70000
                         ? "⭐⭐"
                         : "⭐⭐⭐"}
                     </p>
-                    <p>R$: {vehicle[1].Price}</p>
+                    <p>R$: {vehicle.Price}</p>
                   </FlexBox>
                 </FlexBox>
               );
