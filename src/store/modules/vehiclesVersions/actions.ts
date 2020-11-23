@@ -5,7 +5,7 @@ interface IVehiclesVersions {
   readonly ModelID: number
 }
 
-export function vehiclesVersionsRequest(ModelID: IVehiclesVersions) {
+export function vehiclesVersionsRequest({ModelID}: IVehiclesVersions) {
   return action('@vehicles/LIST_VERSIONS_REQUEST', {
       ModelID
     });

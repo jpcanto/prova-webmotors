@@ -6,7 +6,7 @@ import api from "../../../services/api";
 
 export function* listVehicles({ payload }: ActionType<typeof actions.vehiclesRequest>) {
   try {
-    const { data } = yield call(api.get, `/Vehicles?Page=${payload.Page.Page}`);
+    const { data } = yield call(api.get, `/Vehicles?Page=${payload.Page}`);
 
     yield put(actions.vehiclesSuccess(data))
 

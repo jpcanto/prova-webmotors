@@ -5,7 +5,7 @@ interface IVehiclesModels {
   readonly MakeID: number
 }
 
-export function vehiclesModelsRequest(MakeID: IVehiclesModels) {
+export function vehiclesModelsRequest({MakeID}: IVehiclesModels) {
   return action('@vehicles/LIST_MODELS_REQUEST', {
       MakeID
     });

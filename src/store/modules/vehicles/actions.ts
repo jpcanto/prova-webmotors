@@ -5,7 +5,7 @@ interface IVehicles {
   readonly Page: number
 }
 
-export function vehiclesRequest(Page: IVehicles) {
+export function vehiclesRequest({Page}: IVehicles) {
   return action('@vehicles/LIST_REQUEST', {
       Page
     });
