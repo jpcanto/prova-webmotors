@@ -14,7 +14,7 @@ const Form: React.FC = () => {
   return (
     <>
       <FormHeader></FormHeader>
-      <FormComponent>
+      <FormComponent role="form">
         <FlexBox direction="column" padding="2vh 5vw">
           <FlexBox direction="row">
             <CheckBox label="Novos" />

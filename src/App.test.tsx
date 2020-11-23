@@ -10,21 +10,7 @@ beforeEach(() => {
   render(<App />);
 });
 
-test("Should render pagination div", () => {
-  const selection = screen.getByRole("pagination");
+test("Should render Form div", () => {
+  const selection = screen.getByRole("form");
   expect(selection).toBeInTheDocument();
-});
-
-test("Should render vehicles on page 1", () => {
-  const selection = screen.getByRole("page-1");
-  expect(selection).toBeInTheDocument();
-});
-
-test("Should render vehicles on page 2 when click on pagination 2", () => {
-  const selection = screen.getByRole("page-1");
-  expect(selection).toBeInTheDocument();
-
-  const pageButton = screen.getByRole("button-2");
-  userEvent.click(pageButton, { button: 0 });
-  expect(screen.getByRole("page-2")).toBeInTheDocument();
 });
