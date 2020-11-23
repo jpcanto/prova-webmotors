@@ -49,7 +49,7 @@ const FilteredVehicles: React.FC = () => {
   return (
     <Container>
       {VehiclesData.loading ? <PreLoader /> : null}
-      <FlexBox direction="row" position="center">
+      <FlexBox direction="row" position="center" role={`page-${page}`}>
         {filtered
           ? filtered.map((vehicle: any, index: number) => {
               return (
@@ -79,9 +79,9 @@ const FilteredVehicles: React.FC = () => {
             })
           : null}
       </FlexBox>
-      <FlexBox direction="row" align="center" position="space-evenly">
-        {[1, 2, 3].map((number) => (
-          <div onClick={() => setPage(number)} key={number}>
+      <FlexBox direction="row" align="center" position="space-evenly" role="pagination">
+        {[1, 2, 3].map((number, index) => (
+          <div onClick={() => setPage(number)} key={number} role={`button-${index + 1}`}>
             {number}
           </div>
         ))}
