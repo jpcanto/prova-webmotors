@@ -7,5 +7,6 @@ export type VehiclesAction = ActionType<typeof actions>
 export interface VehiclesState {
   readonly error: boolean,
   readonly loading: boolean,
-  readonly vehicles: Object | null
+  readonly vehicles: any
 }
+
